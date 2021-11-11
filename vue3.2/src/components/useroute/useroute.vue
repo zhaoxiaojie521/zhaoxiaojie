@@ -17,28 +17,30 @@
                      router
                      @open="handleOpen"
                      @close="handleClose">
-              <template v-for="(item,index) in arr"
-                        :key="index">
-                <el-menu-item :index="item.path"
-                              v-if="!item.children">
-                  <el-icon>
-                    <component :is="item.meta.icon" />
-                  </el-icon>
-
-                  <span>{{item.meta.title}}</span>
-                </el-menu-item>
-                <el-sub-menu index="2"
-                             v-if="item.children">
-                  <template #title>
+              <template v-for="(item,index) in arr">
+                <div :key="index"
+                     v-if="index!==1">
+                  <el-menu-item :index="item.path"
+                                v-if="!item.children">
                     <el-icon>
                       <component :is="item.meta.icon" />
                     </el-icon>
+
                     <span>{{item.meta.title}}</span>
-                  </template>
-                  <el-menu-item :index="items.path"
-                                v-for="(items,indexs) in item.children"
-                                :key="indexs">{{items.meta.title}}</el-menu-item>
-                </el-sub-menu>
+                  </el-menu-item>
+                  <el-sub-menu index="2"
+                               v-if="item.children">
+                    <template #title>
+                      <el-icon>
+                        <component :is="item.meta.icon" />
+                      </el-icon>
+                      <span>{{item.meta.title}}</span>
+                    </template>
+                    <el-menu-item :index="items.path"
+                                  v-for="(items,indexs) in item.children"
+                                  :key="indexs">{{items.meta.title}}</el-menu-item>
+                  </el-sub-menu>
+                </div>
               </template>
             </el-menu>
           </el-col>

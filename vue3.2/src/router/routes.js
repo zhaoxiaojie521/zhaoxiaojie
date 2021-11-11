@@ -10,6 +10,12 @@ import {
 const routes = [
   {
     path: "/",
+    redirect: "/home",
+    component: Home,
+    meta: { title: "首页", icon: Location },
+  },
+  {
+    path: "/home",
     name: "home",
     component: Home,
     meta: { title: "首页", icon: Location },
